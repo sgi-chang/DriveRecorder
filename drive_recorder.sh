@@ -37,7 +37,7 @@ then
     #ファイルがない場合
     if [ ! -e ${path}${recordingDate}.mp4 ]
     then
-        echo "[ERROR]${path}${lastRecordingDate}.mp4 undifined" >> "${path}drive_recorder.log" 2>&1
+        echo "[ERROR] File does not exist: ${path}${lastRecordingDate}.mp4" >> "${path}drive_recorder.log" 2>&1
         exit 1
     fi
     #一時ファイル削除
@@ -69,7 +69,7 @@ raspivid -o ${path}${h264Video} -t ${RecordingTime} >> "${path}drive_recorder.lo
 #ファイルがない場合
 if [ ! -e ${path}${h264Video} ]
 then
-    echo "[ERROR]${path}${h264Video} undifined" >> "${path}drive_recorder.log" 2>&1
+    echo "[ERROR] File does not exist: ${path}${h264Video}" >> "${path}drive_recorder.log" 2>&1
     exit 1
 fi
 #mp4化
@@ -77,7 +77,7 @@ MP4Box -add ${path}${h264Video} ${path}${recordingDate}.mp4 >> "${path}drive_rec
 #ファイルがない場合
 if [ ! -e ${path}${recordingDate}.mp4 ]
 then
-    echo "[ERROR]${path}${recordingDate}.mp4 undifined" >> "${path}drive_recorder.log" 2>&1
+    echo "[ERROR] File does not exist: ${path}${recordingDate}.mp4" >> "${path}drive_recorder.log" 2>&1
     exit 1
 fi
 #一時ファイル削除
